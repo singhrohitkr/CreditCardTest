@@ -1,0 +1,28 @@
+<div class="margin-bottom-70">	
+	<!-- iterate over the data set using looping statement -->
+	<div class="row" *ngFor="let homeObj of listHomes">
+		<div class="col-sm-6 col-sm-offset-2">
+			<div class="row margin-top-30">				
+				<div class="col-sm-6 img-container">
+					<!-- Bind the Image -->
+					<img [src]="homeObj.image" />
+				</div>
+				<div class="col-sm-4">					
+					<!-- Bind the Home details as per the UI -->
+					<strong>{{homeObj.home}} Apartment</strong>
+					<p>Build up Area <strong>{{homeObj.area}} Yards </strong></p>
+					<p>Avg. Price <strong>{{homeObj.averageprice}} Yards </strong></p>
+					<p>Rs. <strong>{{homeObj.totalprice}} </strong></p>
+					<p class="emiblock">Emi Starts @ Rs {{homeObj.emi}} </p>
+				</div>
+				<div class="col-sm-2">
+					<!-- Enquiry propery button -->
+					<button class="btn btn-success btn-lg custom-button" (click)="enqBtn()">
+						Enquire property
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+    

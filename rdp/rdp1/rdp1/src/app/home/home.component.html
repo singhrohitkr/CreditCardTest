@@ -1,0 +1,58 @@
+<div>
+	<!-- 1: Form should have city drop down, BHK size as radio buttons, Input fields for min and max budget and view properties button.
+		 2. Validation span for each filed with proper error message as per the given screen shots in the requirement.
+		 3. It should be show / hide based on the validation flag.
+		 4. Call onSubmit(myForm.value) while submit the form.-->
+
+	<form #myForm="ngForm">
+		<div class="top-container">
+			<span class="city-container">
+				<b> You are in 1 </b>
+				<select class="select-city" name="city" ngModel>
+					<option></option>
+					<option value="Bangalore" >Bangalore</option>
+					<option value="Delhi">Delhi</option>
+				</select>
+			</span>
+			<span class="button-container">
+					<button (click)="onSubmit(myForm)" class="btn btn-success btn-lg custom-button">
+							view properties
+					</button>
+			</span>
+		</div>
+		<span class="errorkey error-container" *ngIf="!errorKeys.isNoResultValid">
+			*No results Found for this query
+		</span>
+		<span class="errorkey" *ngIf="!errorKeys.isCityValid">
+				*Please select a city		
+		</span>
+		<div class="center-container">
+			<b> SELECT BHK </b> <br>
+			<input class="margin-0" ngModel name="home" type="radio" value="1BHK">
+			<label class="margin-2"> 1BHK </label>
+			<input class="radio-margin " ngModel name="home" type="radio" value="2BHK">
+			<label> 2 BHK  </label>
+		</div>
+		<span class="errorkey" *ngIf="!errorKeys.isBhkValid">		
+			*Please select BHK size
+		</span>
+
+		<div class="bottom-container">
+			<b> SELECT BUDGET(Approx.) </b> <br>
+			<label> MIN </label>
+			<input class="input-box" min="0" name="minBudget" ngModel type="number">
+			<label class="margin-left-50"> MAX </label>
+			<input class="input-box" max="10000000000" min="0" name="maxBudget" ngModel type="number">
+		</div>
+		<span class="errorkey" *ngIf="!errorKeys.isMinBudgetValid">
+			Please enter a valid Min budget
+		</span>
+
+		<span class="errorkey" *ngIf="!errorKeys.isMaxBudgetValid">
+			Please enter a valid Max budget
+		</span>
+		<span class="errorkey" *ngIf="!errorKeys.isMaxLessThanMinValid">
+			*Min budget can't be greater than the Max Budget
+		</span>
+	</form>
+</div>
